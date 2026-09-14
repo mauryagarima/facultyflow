@@ -1,3 +1,4 @@
+
 import connectDB from "@/lib/mongodb";
 import Attendance from "@/models/Attendance";
 import Student from "@/models/Student";
@@ -9,7 +10,7 @@ const COLLEGE_LONGITUDE = 82.700250;
 // Allowed Radius
 const ALLOWED_RADIUS = 150; // meters
 
-// Distance calculate करने का function
+// Calculate distance between two locations
 function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371000;
 
@@ -29,6 +30,9 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
+// =========================
+// GET ATTENDANCE
+// =========================
 export async function GET() {
   try {
     await connectDB();
@@ -42,6 +46,8 @@ export async function GET() {
       data: attendance,
     });
   } catch (error) {
+    console.error("Fetch Attendance Error:", error);
+
     return Response.json(
       {
         success: false,
@@ -52,6 +58,10 @@ export async function GET() {
     );
   }
 }
+
+// =========================
+// MARK ATTENDANCE
+// =========================
 export async function POST(request) {
   try {
     await connectDB();
@@ -65,7 +75,9 @@ export async function POST(request) {
       longitude,
     } = body;
 
+    // -------------------------
     // Required fields
+    // -------------------------
     if (
       !studentId ||
       !subject ||
@@ -81,7 +93,9 @@ export async function POST(request) {
       );
     }
 
-    // Check Student
+    // -------------------------
+    // Find Student
+    // -------------------------
     const student = await Student.findById(studentId);
 
     if (!student) {
@@ -94,7 +108,9 @@ export async function POST(request) {
       );
     }
 
-    // Calculate distance from college
+    // -------------------------
+    // Calculate Distance
+    // -------------------------
     const distance = calculateDistance(
       Number(latitude),
       Number(longitude),
@@ -102,7 +118,9 @@ export async function POST(request) {
       COLLEGE_LONGITUDE
     );
 
-    // Location verification
+    // -------------------------
+    // Check College Location
+    // -------------------------
     if (distance > ALLOWED_RADIUS) {
       return Response.json(
         {
@@ -114,7 +132,9 @@ export async function POST(request) {
       );
     }
 
-    // Current date & time
+    // -------------------------
+    // Current Date & Time
+    // -------------------------
     const now = new Date();
 
     const date = now.toISOString().split("T")[0];
@@ -125,9 +145,11 @@ export async function POST(request) {
       hour12: true,
     });
 
-    // Check duplicate attendance
+    // -------------------------
+    // Check Duplicate Attendance
+    // -------------------------
     const existingAttendance = await Attendance.findOne({
-      studentId,
+      studentId: student._id.toString(),
       subject,
       date,
     });
@@ -137,27 +159,33 @@ export async function POST(request) {
         {
           success: false,
           message: "Attendance already marked for today.",
+          distance: Math.round(distance),
         },
         { status: 409 }
       );
     }
 
+    // -------------------------
     // Save Attendance
-const attendance = await Attendance.create({
-  student: student._id,
-  studentId: student._id.toString(),
-  studentName: student.name,
-  enrollmentNumber: student.enrollmentNumber,
-  branch: student.branch,
-  semester: student.semester.toString(),
-  subject,
-  date,
-  time,
-  latitude: Number(latitude),
-  longitude: Number(longitude),
-  status: "Present",
-});
+    // -------------------------
+    const attendance = await Attendance.create({
+      student: student._id,
+      studentId: student._id.toString(),
+      studentName: student.name,
+      enrollmentNumber: student.enrollmentNumber,
+      branch: student.branch,
+      semester: String(student.semester),
+      subject,
+      date,
+      time,
+      latitude: Number(latitude),
+      longitude: Number(longitude),
+      status: "Present",
+    });
 
+    // -------------------------
+    // Success Response
+    // -------------------------
     return Response.json(
       {
         success: true,
@@ -180,3 +208,4 @@ const attendance = await Attendance.create({
     );
   }
 }
+
