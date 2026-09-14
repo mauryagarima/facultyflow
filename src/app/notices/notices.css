@@ -1,0 +1,104 @@
+* {
+  box-sizing: border-box;
+}
+
+.notices-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px 20px;
+}
+
+.notices-container {
+  max-width: 900px;
+  margin: auto;
+}
+
+.notices-header {
+  margin-bottom: 30px;
+}
+
+.notices-header h1 {
+  margin: 0 0 8px;
+  color: #1e293b;
+  font-size: 32px;
+}
+
+.notices-header p {
+  margin: 0;
+  color: #64748b;
+}
+
+.notices-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.notice-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  border-left: 5px solid #2563eb;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.06);
+}
+
+.notice-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.notice-category {
+  background: #eff6ff;
+  color: #2563eb;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.notice-date {
+  color: #64748b;
+  font-size: 14px;
+}
+
+.notice-card h2 {
+  color: #1e293b;
+  font-size: 21px;
+  margin-bottom: 12px;
+}
+
+.notice-card p {
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.loading-message,
+.empty-message,
+.error-message {
+  text-align: center;
+  padding: 30px;
+  color: #64748b;
+}
+
+.error-message {
+  color: #dc2626;
+}
+
+@media (max-width: 600px) {
+  .notices-page {
+    padding: 25px 15px;
+  }
+
+  .notices-header h1 {
+    font-size: 26px;
+  }
+
+  .notice-card {
+    padding: 20px;
+  }
+}

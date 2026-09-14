@@ -1,0 +1,133 @@
+.faculty-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.faculty-header {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.faculty-header h1 {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.faculty-header p {
+  color: #6b7280;
+}
+
+.add-button {
+  text-decoration: none;
+  background: #2563eb;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.add-button:hover {
+  background: #1d4ed8;
+}
+
+.stats-container {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+  display: flex;
+  gap: 20px;
+}
+
+.stat-card {
+  flex: 1;
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card span {
+  color: #6b7280;
+}
+
+.stat-card h2 {
+  font-size: 32px;
+  margin-top: 10px;
+}
+
+.table-card {
+  max-width: 1200px;
+  margin: auto;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.table-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.table-title h2 {
+  font-size: 22px;
+}
+
+.table-title span {
+  color: #6b7280;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th {
+  text-align: left;
+  padding: 15px;
+  background: #f8fafc;
+  color: #475569;
+}
+
+td {
+  padding: 15px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+tr:hover {
+  background: #f8fafc;
+}
+
+.faculty-name {
+  font-weight: 600;
+}
+
+.department-badge {
+  background: #dbeafe;
+  color: #1d4ed8;
+  padding: 6px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 50px;
+  color: #6b7280;
+}
+
+.loading {
+  text-align: center;
+  padding: 100px;
+  font-size: 22px;
+}

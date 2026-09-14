@@ -1,0 +1,173 @@
+* {
+  box-sizing: border-box;
+}
+
+.teacher-dashboard {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding-bottom: 40px;
+}
+
+/* Header */
+
+.dashboard-header {
+  background: #1e3a8a;
+  color: white;
+  padding: 20px 8%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.dashboard-header h1 {
+  margin: 0;
+  font-size: 28px;
+}
+
+.dashboard-header p {
+  margin: 5px 0 0;
+  opacity: 0.8;
+}
+
+.logout-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* Welcome */
+
+.welcome-section {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+.welcome-section h2 {
+  margin-bottom: 8px;
+  color: #1e293b;
+}
+
+.welcome-section p {
+  color: #64748b;
+}
+
+/* Summary */
+
+.summary-container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.summary-card {
+  background: white;
+  padding: 22px;
+  border-radius: 14px;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.summary-card span {
+  font-size: 35px;
+}
+
+.summary-card h3 {
+  margin: 0 0 5px;
+}
+
+.summary-card p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+/* Features */
+
+.features-section {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.features-section h2 {
+  margin-bottom: 25px;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+.feature-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  transition: 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+  border-color: #2563eb;
+}
+
+.feature-icon {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.feature-card h3 {
+  margin-bottom: 10px;
+}
+
+.feature-card p {
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.open-link {
+  display: inline-block;
+  margin-top: 15px;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Responsive */
+
+@media (max-width: 900px) {
+
+  .features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .summary-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+
+  .features-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-header {
+    padding: 18px 20px;
+  }
+
+  .dashboard-header h1 {
+    font-size: 23px;
+  }
+}

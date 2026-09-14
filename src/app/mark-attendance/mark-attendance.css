@@ -1,0 +1,118 @@
+.mark-attendance-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px 20px;
+}
+
+.attendance-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 35px;
+  border-radius: 16px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+}
+
+.back-button {
+  border: none;
+  background: transparent;
+  color: #2563eb;
+  font-size: 15px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.back-button:hover {
+  text-decoration: underline;
+}
+
+.attendance-title {
+  margin: 0;
+  font-size: 30px;
+  color: #1f2937;
+}
+
+.attendance-description {
+  color: #6b7280;
+  margin-top: 10px;
+  line-height: 1.6;
+}
+
+.subject-label {
+  display: block;
+  margin-top: 25px;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.subject-select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 15px;
+  background: white;
+  outline: none;
+}
+
+.subject-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+}
+
+.attendance-button {
+  width: 100%;
+  margin-top: 25px;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  transition: 0.2s;
+}
+
+.attendance-button:hover {
+  background: #1d4ed8;
+}
+
+.attendance-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.success-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.error-message {
+  margin-top: 20px;
+  padding: 15px;
+  background: #fee2e2;
+  color: #991b1b;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .mark-attendance-page {
+    padding: 20px 15px;
+  }
+
+  .attendance-container {
+    padding: 25px 20px;
+  }
+
+  .attendance-title {
+    font-size: 25px;
+  }
+}

@@ -1,0 +1,429 @@
+.academic-detail-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.academic-detail-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.detail-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.detail-header p {
+  color: #666;
+  margin-top: 8px;
+}
+
+.back-button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #e5e7eb;
+  font-size: 15px;
+}
+
+.student-profile-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.profile-icon {
+  font-size: 55px;
+}
+
+.profile-info h2 {
+  margin: 0 0 15px;
+}
+
+.student-details {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.student-details p {
+  margin: 0;
+  color: #555;
+}
+
+.record-section {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  margin: 0;
+}
+
+.section-title p {
+  color: #777;
+  margin-top: 6px;
+}
+
+.attendance-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+.summary-card {
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  background: #f5f7fb;
+}
+
+.summary-card span {
+  font-size: 28px;
+}
+
+.summary-card h3 {
+  font-size: 25px;
+  margin: 8px 0;
+}
+
+.summary-card p {
+  margin: 0;
+  color: #666;
+}
+
+.table-container {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  padding: 13px;
+  border-bottom: 1px solid #eee;
+  text-align: left;
+}
+
+th {
+  background: #f5f7fb;
+}
+
+.status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.status.present {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.status.absent {
+  background: #fee2e2;
+  color: #991b1b;
+}
+
+.no-record {
+  padding: 25px;
+  text-align: center;
+  color: #777;
+  background: #f8fafc;
+  border-radius: 10px;
+}
+
+.loading-box,
+.empty-box {
+  background: white;
+  padding: 60px;
+  text-align: center;
+  border-radius: 15px;
+  margin-top: 50px;
+}
+
+.empty-box button {
+  margin-top: 20px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .academic-detail-page {
+    padding: 20px;
+  }
+
+  .detail-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .student-profile-card {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .student-details {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .attendance-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.print-button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+}
+
+.print-button:hover {
+  background: #1d4ed8;
+}
+
+.performance-section {
+  margin-top: 25px;
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.performance-card {
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  background: #f5f7fb;
+}
+
+.performance-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.performance-card h3 {
+  font-size: 26px;
+  margin: 5px 0;
+}
+
+.performance-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.performance-card small {
+  color: #777;
+}
+
+.overall-performance {
+  margin-top: 20px;
+  padding: 18px 22px;
+  border-radius: 12px;
+  background: #eef2ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overall-performance span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.overall-performance strong {
+  font-size: 28px;
+}
+
+
+/* Print Report */
+@media print {
+  .back-button,
+  .print-button,
+  .header-buttons {
+    display: none !important;
+  }
+
+  .academic-detail-page {
+    padding: 0;
+    background: white;
+  }
+
+  .academic-detail-container {
+    max-width: 100%;
+  }
+
+  .record-section,
+  .student-profile-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .header-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .performance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}.header-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.print-button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+}
+
+.print-button:hover {
+  background: #1d4ed8;
+}
+
+.performance-section {
+  margin-top: 25px;
+}
+
+.performance-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+.performance-card {
+  padding: 20px;
+  text-align: center;
+  border-radius: 12px;
+  background: #f5f7fb;
+}
+
+.performance-icon {
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.performance-card h3 {
+  font-size: 26px;
+  margin: 5px 0;
+}
+
+.performance-card p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.performance-card small {
+  color: #777;
+}
+
+.overall-performance {
+  margin-top: 20px;
+  padding: 18px 22px;
+  border-radius: 12px;
+  background: #eef2ff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.overall-performance span {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.overall-performance strong {
+  font-size: 28px;
+}
+
+
+/* Print Report */
+@media print {
+  .back-button,
+  .print-button,
+  .header-buttons {
+    display: none !important;
+  }
+
+  .academic-detail-page {
+    padding: 0;
+    background: white;
+  }
+
+  .academic-detail-container {
+    max-width: 100%;
+  }
+
+  .record-section,
+  .student-profile-card {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .header-buttons {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .performance-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

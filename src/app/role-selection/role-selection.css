@@ -1,0 +1,111 @@
+.home-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #eef4ff, #f8fafc);
+}
+
+.home-container {
+  width: 100%;
+  max-width: 850px;
+}
+
+.project-info {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.project-info h1 {
+  margin: 0;
+  font-size: 48px;
+  color: #1e3a8a;
+}
+
+.project-info p {
+  margin-top: 12px;
+  color: #64748b;
+  font-size: 18px;
+}
+
+.selection-box {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.selection-box h2 {
+  text-align: center;
+  margin-bottom: 8px;
+  font-size: 28px;
+  color: #1e293b;
+}
+
+.selection-box > p {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.role-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.role-button {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 22px;
+  text-decoration: none;
+  color: #1e293b;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  transition: 0.3s;
+}
+
+.role-button:hover {
+  transform: translateY(-3px);
+  border-color: #2563eb;
+  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+}
+
+.role-icon {
+  font-size: 42px;
+}
+
+.role-button div {
+  flex: 1;
+}
+
+.role-button h3 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+
+.role-button p {
+  margin: 0;
+  color: #64748b;
+}
+
+.arrow {
+  font-size: 28px;
+  color: #2563eb;
+}
+
+@media (max-width: 600px) {
+  .project-info h1 {
+    font-size: 38px;
+  }
+
+  .selection-box {
+    padding: 25px;
+  }
+
+  .role-button {
+    padding: 18px;
+  }
+}

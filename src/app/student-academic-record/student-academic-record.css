@@ -1,0 +1,92 @@
+.academic-record-page {
+  min-height: 100vh;
+  padding: 40px;
+  background: #f5f7fb;
+}
+
+.academic-record-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.academic-record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.academic-record-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.academic-record-header p {
+  margin-top: 8px;
+  color: #666;
+}
+
+.back-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  background: #e5e7eb;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.student-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.student-card {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-4px);
+}
+
+.student-icon {
+  font-size: 45px;
+  margin-bottom: 10px;
+}
+
+.student-info h2 {
+  margin-bottom: 15px;
+}
+
+.student-info p {
+  margin: 8px 0;
+  color: #555;
+}
+
+.view-record-button {
+  width: 100%;
+  margin-top: 20px;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.view-record-button:hover {
+  background: #1d4ed8;
+}
+
+.loading,
+.empty-state {
+  background: white;
+  padding: 50px;
+  text-align: center;
+  border-radius: 12px;
+}

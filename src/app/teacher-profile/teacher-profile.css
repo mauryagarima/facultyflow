@@ -1,0 +1,242 @@
+.teacher-profile-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 30px;
+}
+
+.profile-container {
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* Header */
+
+.profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.profile-header h1 {
+  margin: 0;
+  font-size: 30px;
+  color: #1f2937;
+}
+
+.profile-header p {
+  margin-top: 8px;
+  color: #6b7280;
+}
+
+.back-button {
+  border: none;
+  background: #ffffff;
+  padding: 11px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 15px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.back-button:hover {
+  background: #f0f2f5;
+}
+
+/* Main Profile */
+
+.profile-main-card {
+  background: white;
+  border-radius: 14px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.profile-avatar {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: #eef2ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 45px;
+}
+
+.profile-basic h2 {
+  margin: 0;
+  font-size: 25px;
+  color: #1f2937;
+}
+
+.profile-basic p {
+  margin: 7px 0;
+  color: #6b7280;
+}
+
+.profile-basic span {
+  display: inline-block;
+  background: #e8f5e9;
+  color: #2e7d32;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* Sections */
+
+.profile-section {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.section-heading {
+  margin-bottom: 20px;
+}
+
+.section-heading h2 {
+  margin: 0;
+  color: #1f2937;
+  font-size: 21px;
+}
+
+.section-heading p {
+  margin-top: 6px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* Information Grid */
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.info-card {
+  background: #f8fafc;
+  padding: 17px;
+  border-radius: 10px;
+  border: 1px solid #e5e7eb;
+}
+
+.info-card label {
+  display: block;
+  font-size: 13px;
+  color: #6b7280;
+  margin-bottom: 7px;
+}
+
+.info-card p {
+  margin: 0;
+  font-size: 15px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* Account */
+
+.account-box {
+  display: flex;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.account-box div {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.account-box strong {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.account-box span {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.active-status {
+  color: #2e7d32 !important;
+}
+
+/* Buttons */
+
+.profile-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.edit-button,
+.password-button {
+  border: none;
+  padding: 12px 22px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.edit-button {
+  background: #2563eb;
+  color: white;
+}
+
+.password-button {
+  background: white;
+  color: #374151;
+  border: 1px solid #d1d5db;
+}
+
+.edit-button:hover {
+  background: #1d4ed8;
+}
+
+.password-button:hover {
+  background: #f3f4f6;
+}
+
+/* Responsive */
+
+@media (max-width: 700px) {
+  .teacher-profile-page {
+    padding: 15px;
+  }
+
+  .profile-header {
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .profile-header h1 {
+    font-size: 24px;
+  }
+
+  .profile-main-card {
+    padding: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .account-box {
+    gap: 25px;
+  }
+
+  .profile-actions {
+    flex-direction: column;
+  }
+}

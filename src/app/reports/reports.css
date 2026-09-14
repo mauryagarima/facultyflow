@@ -1,0 +1,227 @@
+.reports-page {
+  min-height: 100vh;
+  padding: 40px 20px;
+  background: #f4f7fb;
+}
+
+.reports-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.reports-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.reports-header h1 {
+  margin: 0;
+  font-size: 32px;
+}
+
+.reports-header p {
+  margin-top: 8px;
+  color: #666;
+}
+
+.back-button {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  background: #333;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+.report-section {
+  background: white;
+  padding: 25px;
+  border-radius: 14px;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title h2 {
+  margin: 0;
+  font-size: 23px;
+}
+
+.section-title p {
+  color: #777;
+  margin-top: 6px;
+}
+
+/* Overview Cards */
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.stat-card {
+  padding: 22px;
+  text-align: center;
+  border-radius: 12px;
+  background: #f5f7fb;
+}
+
+.stat-icon {
+  font-size: 32px;
+  margin-bottom: 8px;
+}
+
+.stat-card h3 {
+  font-size: 28px;
+  margin: 5px 0;
+}
+
+.stat-card p {
+  margin: 0;
+  color: #666;
+}
+
+/* Academic */
+
+.academic-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.academic-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  border-radius: 12px;
+  background: #f5f7fb;
+}
+
+.academic-card > span {
+  font-size: 35px;
+}
+
+.academic-card h3 {
+  margin: 0 0 5px;
+  font-size: 26px;
+}
+
+.academic-card p {
+  margin: 0;
+  color: #666;
+}
+
+/* Task Report */
+
+.task-report {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.task-report div {
+  padding: 20px;
+  border-radius: 12px;
+  background: #f5f7fb;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-report span {
+  font-weight: 600;
+}
+
+.task-report strong {
+  font-size: 25px;
+}
+
+/* Report Buttons */
+
+.report-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.report-buttons button {
+  border: none;
+  padding: 12px 18px;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.report-buttons button:hover {
+  background: #1d4ed8;
+}
+
+.loading-box {
+  background: white;
+  padding: 50px;
+  text-align: center;
+  border-radius: 12px;
+  font-size: 18px;
+}
+
+/* Mobile */
+
+@media (max-width: 900px) {
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .academic-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .task-report {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .reports-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .report-section {
+    padding: 18px;
+  }
+}
+
+/* Print */
+
+@media print {
+  .reports-page {
+    background: white;
+    padding: 0;
+  }
+
+  .back-button,
+  .report-buttons {
+    display: none;
+  }
+
+  .report-section {
+    box-shadow: none;
+    border: 1px solid #ddd;
+    break-inside: avoid;
+  }
+}

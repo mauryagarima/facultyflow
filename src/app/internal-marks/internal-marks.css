@@ -1,0 +1,146 @@
+* {
+  box-sizing: border-box;
+}
+
+.internal-marks-page {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 40px 20px;
+}
+
+.internal-container {
+  max-width: 1200px;
+  margin: auto;
+}
+
+.back-button {
+  display: inline-block;
+  margin-bottom: 20px;
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.marks-card {
+  background: white;
+  padding: 35px;
+  border-radius: 18px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.marks-card h1 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.marks-card > p {
+  text-align: center;
+  color: #64748b;
+  margin-bottom: 30px;
+}
+
+.selection-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.input-group input,
+.input-group select {
+  padding: 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 15px;
+}
+
+.load-button,
+.save-button {
+  margin-top: 25px;
+  padding: 13px 25px;
+  border: none;
+  border-radius: 8px;
+  background: #2563eb;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.load-button:hover,
+.save-button:hover {
+  background: #1d4ed8;
+}
+
+.load-button:disabled,
+.save-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.students-section {
+  margin-top: 35px;
+}
+
+.students-section h2 {
+  margin-bottom: 20px;
+}
+
+.marks-table {
+  overflow-x: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+}
+
+.marks-table table {
+  width: 100%;
+  min-width: 650px;
+  border-collapse: collapse;
+}
+
+.marks-table th {
+  background: #1e3a8a;
+  color: white;
+  padding: 14px;
+  text-align: left;
+}
+
+.marks-table td {
+  padding: 13px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.marks-table input {
+  width: 120px;
+  padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+}
+
+.message {
+  margin-top: 25px;
+  padding: 15px;
+  text-align: center;
+  background: #f1f5f9;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+@media (max-width: 700px) {
+  .selection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .marks-card {
+    padding: 20px;
+  }
+}
