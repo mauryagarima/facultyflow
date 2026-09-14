@@ -1,3 +1,4 @@
+
 "use client";
 
 import Link from "next/link";
@@ -8,76 +9,112 @@ export default function StudentDashboard() {
     <main className="student-dashboard">
       <div className="student-container">
 
-        {/* Header */}
-        <div className="student-header">
-          <div>
-            <h1>Student Dashboard</h1>
-            <p>Manage your attendance and assignments</p>
+        <header className="student-header">
+          <div className="student-brand">
+            <div className="student-logo">🎓</div>
+            <div>
+              <h1>FacultyFlow</h1>
+              <p>Student Dashboard</p>
+            </div>
           </div>
 
           <Link href="/role-selection" className="logout-button">
             Logout
           </Link>
-        </div>
+        </header>
 
-        {/* Welcome */}
-        <div className="welcome-card">
-          <div className="welcome-icon">👨‍🎓</div>
+        <section className="welcome-card">
+          <div className="welcome-content">
+            <div className="welcome-icon">👨‍🎓</div>
 
-          <div>
-            <h2>Welcome, Student!</h2>
-            <p>
-              You can mark your attendance and submit your assignments
-              from here.
-            </p>
+            <div>
+              <span className="welcome-label">STUDENT PORTAL</span>
+              <h2>Welcome, Student! 👋</h2>
+              <p>
+                Manage your attendance and assignments easily from your
+                dashboard.
+              </p>
+            </div>
           </div>
-        </div>
 
-        {/* Features */}
-        <div className="student-grid">
+          <div className="welcome-decoration">📚</div>
+        </section>
 
-          {/* Attendance */}
-          <Link href="/mark-attendance" className="student-card">
-            <div className="card-icon">📍</div>
+        <section className="options-section">
+          <div className="section-heading">
+            <div>
+              <span>QUICK ACCESS</span>
+              <h2>Student Activities</h2>
+            </div>
 
-            <h3>Mark Attendance</h3>
+            <p>Choose an option to continue</p>
+          </div>
 
-            <p>
-              Mark your attendance using your college campus location.
-            </p>
+          <div className="student-grid">
 
-            <span>Mark Now →</span>
-          </Link>
+            <Link href="/mark-attendance" className="student-card">
+              <div className="card-top">
+                <div className="card-icon">📍</div>
+                <div className="card-arrow">→</div>
+              </div>
 
-          {/* Assignment */}
-          <Link href="/submit-assignment" className="student-card">
-            <div className="card-icon">📤</div>
+              <h3>Mark Attendance</h3>
 
-            <h3>Submit Assignment</h3>
+              <p>
+                Mark your attendance using your college campus location.
+              </p>
 
-            <p>
-              Upload and submit your subject assignments.
-            </p>
+              <div className="card-action">
+                <span>Mark Now</span>
+                <span>→</span>
+              </div>
+            </Link>
 
-            <span>Submit Now →</span>
-          </Link>
+            <Link href="/submit-assignment" className="student-card">
+              <div className="card-top">
+                <div className="card-icon">📤</div>
+                <div className="card-arrow">→</div>
+              </div>
 
-          {/* Attendance Record */}
-          <Link href="/my-attendance" className="student-card">
-            <div className="card-icon">📊</div>
+              <h3>Submit Assignment</h3>
 
-            <h3>My Attendance</h3>
+              <p>
+                Upload and submit your subject assignments easily.
+              </p>
 
-            <p>
-              Check your attendance records and attendance percentage.
-            </p>
+              <div className="card-action">
+                <span>Submit Now</span>
+                <span>→</span>
+              </div>
+            </Link>
 
-            <span>View Attendance →</span>
-          </Link>
+            <Link href="/my-attendance" className="student-card">
+              <div className="card-top">
+                <div className="card-icon">📊</div>
+                <div className="card-arrow">→</div>
+              </div>
 
-        </div>
+              <h3>My Attendance</h3>
+
+              <p>
+                Check your attendance records and attendance percentage.
+              </p>
+
+              <div className="card-action">
+                <span>View Attendance</span>
+                <span>→</span>
+              </div>
+            </Link>
+
+          </div>
+        </section>
+
+        <footer className="student-footer">
+          © 2026 FacultyFlow • Smart Faculty Work Management System
+        </footer>
 
       </div>
     </main>
   );
 }
+

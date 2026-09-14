@@ -1,111 +1,248 @@
+
+
 .home-page {
   min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
-  background: linear-gradient(135deg, #eef4ff, #f8fafc);
+  padding: 40px 20px;
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at 10% 20%, rgba(124, 58, 237, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 80%, rgba(79, 70, 229, 0.14), transparent 30%),
+    #f5f7ff;
 }
 
+/* Decorative background circles */
+.home-page::before,
+.home-page::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(2px);
+  pointer-events: none;
+}
+
+.home-page::before {
+  width: 280px;
+  height: 280px;
+  top: -100px;
+  left: -80px;
+  background: rgba(124, 58, 237, 0.12);
+  animation: floating 7s ease-in-out infinite;
+}
+
+.home-page::after {
+  width: 330px;
+  height: 330px;
+  bottom: -150px;
+  right: -100px;
+  background: rgba(79, 70, 229, 0.12);
+  animation: floating 9s ease-in-out infinite reverse;
+}
+
+/* Main container */
 .home-container {
   width: 100%;
-  max-width: 850px;
+  max-width: 900px;
+  position: relative;
+  z-index: 2;
 }
+
+/* ================================
+   PROJECT INFO
+   ================================ */
 
 .project-info {
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
+  animation: fadeDown 0.7s ease;
 }
 
 .project-info h1 {
   margin: 0;
   font-size: 48px;
-  color: #1e3a8a;
+  font-weight: 800;
+  letter-spacing: -1.5px;
+
+  background: linear-gradient(
+    135deg,
+    #312e81,
+    #4f46e5,
+    #7c3aed
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .project-info p {
-  margin-top: 12px;
+  margin: 8px 0 0;
   color: #64748b;
-  font-size: 18px;
+  font-size: 16px;
+  font-weight: 500;
 }
 
+/* ================================
+   SELECTION BOX
+   ================================ */
+
 .selection-box {
-  background: white;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #e2e8f0;
+  border-radius: 24px;
   padding: 40px;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 20px 50px rgba(15, 23, 42, 0.08),
+    0 5px 15px rgba(79, 70, 229, 0.05);
+
+  backdrop-filter: blur(12px);
+
+  animation: fadeUp 0.8s ease;
 }
 
 .selection-box h2 {
+  margin: 0;
   text-align: center;
-  margin-bottom: 8px;
+  color: #111827;
   font-size: 28px;
-  color: #1e293b;
+  font-weight: 750;
 }
 
 .selection-box > p {
+  margin: 8px 0 30px;
   text-align: center;
   color: #64748b;
-  margin-bottom: 30px;
+  font-size: 15px;
 }
+
+/* ================================
+   ROLE BUTTONS
+   ================================ */
 
 .role-buttons {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 16px;
 }
 
 .role-button {
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 22px;
+  gap: 18px;
+
+  width: 100%;
+  min-height: 88px;
+  padding: 18px 20px;
+
   text-decoration: none;
-  color: #1e293b;
-  border: 1px solid #e2e8f0;
-  border-radius: 14px;
-  transition: 0.3s;
+  color: #4C1D95;
+
+  background: #00aeff;
+  border: 1px solid #e4f0e2;
+  border-radius: 16px;
+
+  position: relative;
+  overflow: hidden;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease,
+    background 0.3s ease;
 }
 
-.role-button:hover {
-  transform: translateY(-3px);
-  border-color: #2563eb;
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.12);
+/* Gradient line */
+.role-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 4px;
+  height: 100%;
+
+  background: linear-gradient(
+    180deg,
+    #4f46e5,
+    #7c3aed
+  );
+
+  transform: scaleY(0);
+  transform-origin: bottom;
+
+  transition: transform 0.3s ease;
 }
+
+/* Hover */
+.role-button:hover {
+  transform: translateY(-4px);
+  border-color: #c7d2fe;
+
+  background: #fafaff;
+
+  box-shadow:
+    0 15px 30px rgba(79, 70, 229, 0.12);
+}
+
+.role-button:hover::before {
+  transform: scaleY(1);
+}
+
+/* ================================
+   ROLE ICON
+   ================================ */
 
 .role-icon {
-  font-size: 42px;
+  width: 52px;
+  height: 52px;
+  min-width: 52px;
+
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #eef2ff,
+    #ede9fe
+  );
+
+  border: 1px solid #ddd6fe;
+
+  position: relative;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
-.role-button div {
-  flex: 1;
+/* Icons using existing empty span */
+.role-icon::after {
+  font-size: 25px;
 }
 
-.role-button h3 {
-  margin: 0 0 6px;
-  font-size: 20px;
+.role-button:nth-child(1) .role-icon::after {
+  content: "👨‍💼";
 }
 
-.role-button p {
-  margin: 0;
-  color: #64748b;
+.role-button:nth-child(2) .role-icon::after {
+  content: "👨‍🏫";
 }
 
-.arrow {
-  font-size: 28px;
-  color: #2563eb;
+.role-button:nth-child(3) .role-icon::after {
+  content: "🎓";
 }
 
-@media (max-width: 600px) {
-  .project-info h1 {
-    font-size: 38px;
-  }
+.role-button:hover .role-icon {
+  transform: scale(1.1) rotate(-4deg);
 
-  .selection-box {
-    padding: 25px;
-  }
-
-  .role-button {
-    padding: 18px;
-  }
+  box-shadow:
+    0 8px 18px rgba(79, 70, 229, 0.15);
 }

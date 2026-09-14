@@ -2,80 +2,442 @@
   box-sizing: border-box;
 }
 
+/* =========================
+   MAIN PAGE
+========================= */
+
 .dashboard-page {
   min-height: 100vh;
-  background: #f5f7fb;
-  padding: 40px 20px;
+
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(124, 58, 237, 0.08),
+      transparent 35%
+    ),
+    #f5f7ff;
+
+  padding: 32px;
 }
 
 .dashboard-container {
-  max-width: 1200px;
+  max-width: 1250px;
   margin: auto;
 }
+
+/* =========================
+   HEADER
+========================= */
 
 .dashboard-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 40px;
+
+  margin-bottom: 35px;
+
+  padding: 25px 30px;
+
+  background: blue;
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 10px 30px rgba(15, 23, 42, 0.06);
+
+  backdrop-filter: blur(10px);
+
+  animation: fadeDown 0.5s ease;
 }
 
 .dashboard-header h1 {
   margin: 0;
-  color: #1e293b;
+
+  font-size: 30px;
+
+  font-weight: 750;
+
+  color: white;
+
+  letter-spacing: -0.5px;
 }
 
 .dashboard-header p {
-  color: #64748b;
-  margin-top: 8px;
+  color: white;
+
+  margin: 8px 0 0;
+
+  font-size: 15px;
 }
 
+/* =========================
+   LOGOUT BUTTON
+========================= */
+
 .logout-button {
-  padding: 12px 20px;
-  background: #ef4444;
+  padding: 11px 20px;
+
+  background: linear-gradient(
+    135deg,
+    #ef4444,
+    #dc2626
+  );
+
   color: white;
+
   text-decoration: none;
-  border-radius: 8px;
+
+  border-radius: 10px;
+
+  font-weight: 600;
+
+  box-shadow:
+    0 6px 15px rgba(239, 68, 68, 0.2);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
+
+.logout-button:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 10px 20px rgba(239, 68, 68, 0.28);
+}
+
+/* =========================
+   DASHBOARD GRID
+========================= */
 
 .dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 25px;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(270px, 1fr));
+
+  gap: 22px;
 }
+
+/* =========================
+   DASHBOARD CARD
+========================= */
 
 .dashboard-card {
   position: relative;
+
   display: block;
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
+
+  min-height: 210px;
+
+  padding: 27px;
+
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #e5e7eb;
+
+  border-radius: 18px;
+
   text-decoration: none;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  transition: 0.3s;
+
+  overflow: hidden;
+
+  box-shadow:
+    black 0px 4px 15px rgba(0, 0, 0, 0.08);
+    
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
 }
+
+/* top gradient line */
+
+.dashboard-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    #4f46e5,
+    #7c3aed,
+    #06b6d4
+  );
+
+  transform: scaleX(0);
+
+  transform-origin: left;
+
+  transition: transform 0.3s ease;
+}
+
+.dashboard-card:hover::before {
+  transform: scaleX(1);
+}
+
+/* hover */
 
 .dashboard-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-7px);
+
+  border-color: #d9d6fe;
+
+  box-shadow:
+    0 18px 40px rgba(79, 70, 229, 0.12);
 }
+
+/* =========================
+   ICON
+========================= */
 
 .dashboard-icon {
-  font-size: 40px;
+  width: 58px;
+  height: 58px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    #eef2ff,
+    #f5f3ff
+  );
+
+  border-radius: 15px;
+
+  font-size: 30px;
+
+  margin-bottom: 18px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
 }
+
+.dashboard-card:hover .dashboard-icon {
+  transform: scale(1.08) rotate(-3deg);
+
+  background: linear-gradient(
+    135deg,
+    #e0e7ff,
+    #ede9fe
+  );
+}
+
+/* =========================
+   CARD TITLE
+========================= */
 
 .dashboard-card h2 {
+  margin: 0 0 8px;
+
   color: #1e293b;
-  font-size: 20px;
+
+  font-size: 19px;
+
+  font-weight: 700;
 }
 
+/* =========================
+   CARD DESCRIPTION
+========================= */
+
 .dashboard-card p {
+  margin: 0;
+
   color: #64748b;
-  line-height: 1.5;
+
+  line-height: 1.6;
+
+  font-size: 14px;
+
+  max-width: 90%;
 }
+
+/* =========================
+   ARROW
+========================= */
 
 .card-arrow {
   position: absolute;
-  right: 25px;
+
+  right: 23px;
+
   bottom: 20px;
-  font-size: 24px;
+
+  width: 36px;
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: blue;
+
+  color:white;
+
+  font-size: 20px;
+
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease;
+}
+
+.dashboard-card:hover .card-arrow {
+  transform: translateX(5px);
+
+  background: #eef2ff;
+}
+
+/* =========================
+   ANIMATION
+========================= */
+
+@keyframes fadeDown {
+  from {
+    opacity: 0;
+
+    transform: translateY(-12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   CARD ANIMATION
+========================= */
+
+.dashboard-card {
+  animation: cardAppear 0.5s ease both;
+}
+
+.dashboard-card:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.dashboard-card:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.dashboard-card:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.dashboard-card:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.dashboard-card:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.dashboard-card:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.dashboard-card:nth-child(7) {
+  animation-delay: 0.35s;
+}
+
+@keyframes cardAppear {
+  from {
+    opacity: 0;
+
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+  .dashboard-page {
+    padding: 20px 15px;
+  }
+
+  .dashboard-header {
+    padding: 20px;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    flex-direction: column;
+  }
+
+  .dashboard-header h1 {
+    font-size: 24px;
+  }
+
+  .logout-button {
+    width: 100%;
+
+    text-align: center;
+  }
+
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-card {
+    min-height: 190px;
+  }
+}
+/* =================================
+   COMING SOON CARD
+   ================================= */
+
+.coming-soon-card {
+  cursor: default;
+}
+
+.coming-soon-card:hover {
+  transform: translateY(-5px);
+}
+
+.coming-soon-content {
+  margin-top: 18px;
+}
+
+.coming-soon-badge {
+  display: inline-flex;
+  align-items: center;
+
+  padding: 7px 13px;
+
+  border-radius: 20px;
+
+  background: #ede9fe;
+  color: #6d28d9;
+
+  border: 1px solid #ddd6fe;
+
+  font-size: 12px;
+  font-weight: 700;
 }

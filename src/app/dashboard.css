@@ -136,6 +136,16 @@ body {
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
 }
 
+.management-card:has(.coming-soon-badge) {
+  background: #f8fafc;
+  border-style: dashed;
+}
+
+.management-card:has(.coming-soon-badge):hover {
+  transform: none;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.04);
+}
+
 .card-icon {
   font-size: 42px;
   margin-bottom: 15px;
@@ -172,6 +182,17 @@ body {
 .dashboard-link:hover {
   background: #2563eb;
   color: white;
+}
+
+.coming-soon-badge {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 14px;
+  font-weight: 600;
 }
 
 /* Responsive Design */

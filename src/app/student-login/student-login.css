@@ -1,138 +1,610 @@
+
+
 .student-login-page {
   min-height: 100vh;
-  background: #f4f7fb;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 20px;
+
+  padding: 35px 20px;
+
+  position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 8% 15%,
+      rgba(124, 58, 237, 0.16),
+      transparent 30%
+    ),
+    radial-gradient(
+      circle at 92% 85%,
+      rgba(79, 70, 229, 0.15),
+      transparent 32%
+    ),
+    #f5f7ff;
 }
+
+/* =========================================
+   BACKGROUND BLOBS
+   ========================================= */
+
+.student-blob {
+  position: absolute;
+
+  border-radius: 50%;
+
+  pointer-events: none;
+
+  filter: blur(3px);
+}
+
+.student-blob-one {
+  width: 280px;
+  height: 280px;
+
+  top: -120px;
+  left: -90px;
+
+  background: rgba(124, 58, 237, 0.12);
+
+  animation: floatBlob 8s ease-in-out infinite;
+}
+
+.student-blob-two {
+  width: 350px;
+  height: 350px;
+
+  right: -150px;
+  bottom: -150px;
+
+  background: rgba(79, 70, 229, 0.12);
+
+  animation: floatBlob 10s ease-in-out infinite reverse;
+}
+
+/* =========================================
+   CONTAINER
+   ========================================= */
 
 .student-login-container {
   width: 100%;
   max-width: 480px;
+
   position: relative;
+  z-index: 2;
+
+  animation: loginAppear 0.7s ease;
 }
 
-/* Back Button */
+/* =========================================
+   BACK BUTTON
+   ========================================= */
 
 .back-button {
-  display: inline-block;
-  margin-bottom: 18px;
-  text-decoration: none;
-  color: #2563eb;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+  margin-bottom: 16px;
+
+  color: #4c1d95;
+
+  font-size: 14px;
   font-weight: 600;
-  font-size: 15px;
+
+  text-decoration: none;
+
+  transition: all 0.25s ease;
+}
+
+.back-button span {
+  font-size: 20px;
+
+  transition: transform 0.25s ease;
 }
 
 .back-button:hover {
-  text-decoration: underline;
+  color: #4f46e5;
 }
 
-/* Login Card */
+.back-button:hover span {
+  transform: translateX(-4px);
+}
+
+/* =========================================
+   LOGIN CARD
+   ========================================= */
 
 .student-login-card {
-  background: white;
-  padding: 35px;
-  border-radius: 18px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.96);
+
+  border: 1px solid #e2e8f0;
+
+  border-radius: 24px;
+
+  padding: 35px 38px;
+
+  box-shadow:
+    0 25px 60px rgba(15, 23, 42, 0.10),
+    0 8px 25px rgba(79, 70, 229, 0.06);
+
+  backdrop-filter: blur(15px);
 }
 
-.student-login-icon {
-  width: 70px;
-  height: 70px;
-  background: #e8f0ff;
-  border-radius: 50%;
+/* =========================================
+   BRAND
+   ========================================= */
+
+.brand-section {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 38px;
-  margin: 0 auto 18px;
+
+  gap: 12px;
+
+  margin-bottom: 16px;
 }
 
+.student-login-icon {
+  width: 55px;
+  height: 55px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 16px;
+
+  background: linear-gradient(
+    135deg,
+    #eef2ff,
+    #ede9fe
+  );
+
+  border: 1px solid #ddd6fe;
+
+  font-size: 28px;
+
+  box-shadow:
+    0 8px 20px rgba(79, 70, 229, 0.10);
+
+  animation: iconFloat 3s ease-in-out infinite;
+}
+
+.brand-name {
+  font-size: 24px;
+  font-weight: 800;
+
+  color: #312e81;
+}
+
+.brand-name span {
+  color: #7c3aed;
+}
+
+/* =========================================
+   HEADING
+   ========================================= */
+
 .student-login-card h1 {
-  text-align: center;
   margin: 0;
-  color: #1f2937;
-  font-size: 30px;
+
+  text-align: center;
+
+  color: #111827;
+
+  font-size: 28px;
+  font-weight: 800;
 }
 
 .subtitle {
+  max-width: 380px;
+
+  margin: 8px auto 25px;
+
   text-align: center;
-  color: #6b7280;
-  margin: 10px 0 28px;
-  font-size: 14px;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.6;
 }
 
-/* Input */
+/* =========================================
+   INPUT GROUP
+   ========================================= */
 
 .input-group {
-  margin-bottom: 18px;
+  margin-bottom: 16px;
 }
 
 .input-group label {
   display: block;
+
   margin-bottom: 7px;
-  color: #374151;
-  font-weight: 600;
-  font-size: 14px;
+
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 700;
 }
 
-.input-group input {
+/* =========================================
+   INPUT WRAPPER
+   ========================================= */
+
+.input-wrapper {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+
+  left: 14px;
+
+  font-size: 16px;
+
+  pointer-events: none;
+
+  z-index: 1;
+}
+
+.input-wrapper input {
   width: 100%;
-  box-sizing: border-box;
-  padding: 13px 14px;
-  border: 1px solid #d1d5db;
-  border-radius: 9px;
-  font-size: 15px;
+
+  height: 49px;
+
+  padding: 0 15px 0 44px;
+
+  border: 1px solid #dbe2ea;
+
+  border-radius: 11px;
+
   outline: none;
-  transition: 0.2s;
+
+  background: #f8fafc;
+
+  color: #1e293b;
+
+  font-size: 14px;
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
 }
 
-.input-group input:focus {
-  border-color: #2563eb;
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+.input-wrapper input::placeholder {
+  color: #94a3b8;
 }
 
-.input-group input::placeholder {
-  color: #9ca3af;
+.input-wrapper input:focus {
+  background: #ffffff;
+
+  border-color: #6366f1;
+
+  box-shadow:
+    0 0 0 4px rgba(99, 102, 241, 0.10);
 }
 
-/* Login Button */
+/* =========================================
+   INPUT HINT
+   ========================================= */
+
+.input-hint {
+  display: block;
+
+  margin-top: 5px;
+  margin-left: 3px;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+/* =========================================
+   ERROR MESSAGE
+   ========================================= */
+
+.error-message {
+  display: flex;
+  align-items: center;
+
+  gap: 9px;
+
+  margin-bottom: 15px;
+
+  padding: 11px 13px;
+
+  border-radius: 10px;
+
+  background: #fef2f2;
+
+  border: 1px solid #fecaca;
+}
+
+.error-message span {
+  font-size: 16px;
+}
+
+.error-message p {
+  margin: 0;
+
+  color: #b91c1c;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  line-height: 1.4;
+}
+
+/* =========================================
+   LOGIN BUTTON
+   ========================================= */
 
 .student-login-button {
   width: 100%;
+
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 10px;
+
+  margin-top: 4px;
+
   border: none;
-  padding: 14px;
-  margin-top: 8px;
-  background: #2563eb;
-  color: white;
-  border-radius: 9px;
-  font-size: 16px;
-  font-weight: 600;
+
+  border-radius: 11px;
+
+  background: linear-gradient(
+    135deg,
+    #312e81,
+    #4f46e5,
+    #7c3aed
+  );
+
+  color: #ffffff;
+
+  font-size: 15px;
+
+  font-weight: 700;
+
   cursor: pointer;
-  transition: 0.2s;
+
+  box-shadow:
+    0 10px 20px rgba(79, 70, 229, 0.22);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    opacity 0.25s ease;
 }
 
-.student-login-button:hover {
-  background: #1d4ed8;
+.student-login-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 15px 28px rgba(79, 70, 229, 0.30);
 }
 
-.student-login-button:active {
-  transform: scale(0.98);
+.student-login-button:active:not(:disabled) {
+  transform: translateY(0);
 }
 
-/* Mobile */
+.student-login-button:disabled {
+  opacity: 0.75;
 
-@media (max-width: 600px) {
+  cursor: not-allowed;
+}
+
+.button-arrow {
+  font-size: 19px;
+
+  transition: transform 0.25s ease;
+}
+
+.student-login-button:hover .button-arrow {
+  transform: translateX(4px);
+}
+
+/* =========================================
+   LOADING SPINNER
+   ========================================= */
+
+.spinner {
+  width: 17px;
+  height: 17px;
+
+  border: 2px solid rgba(255, 255, 255, 0.4);
+
+  border-top-color: #ffffff;
+
+  border-radius: 50%;
+
+  animation: spin 0.7s linear infinite;
+}
+
+/* =========================================
+   CREATE ACCOUNT
+   ========================================= */
+
+.create-account-text {
+  margin: 18px 0 0;
+
+  text-align: center;
+
+  color: #64748b;
+
+  font-size: 13px;
+}
+
+.create-account-link {
+  color: #4f46e5;
+
+  font-weight: 700;
+
+  text-decoration: none;
+
+  transition: color 0.2s ease;
+}
+
+.create-account-link:hover {
+  color: #7c3aed;
+
+  text-decoration: underline;
+}
+
+/* =========================================
+   SECURITY NOTE
+   ========================================= */
+
+.security-note {
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 7px;
+
+  margin-top: 22px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid #e2e8f0;
+}
+
+.security-note span {
+  font-size: 14px;
+}
+
+.security-note p {
+  margin: 0;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+/* =========================================
+   FOOTER
+   ========================================= */
+
+.login-footer {
+  margin: 16px 0 0;
+
+  text-align: center;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes loginAppear {
+  from {
+    opacity: 0;
+
+    transform:
+      translateY(25px)
+      scale(0.98);
+  }
+
+  to {
+    opacity: 1;
+
+    transform:
+      translateY(0)
+      scale(1);
+  }
+}
+
+@keyframes iconFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes floatBlob {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(20px, 15px);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 520px) {
   .student-login-page {
-    padding: 20px 15px;
+    padding: 25px 14px;
   }
 
   .student-login-card {
-    padding: 25px 20px;
+    padding: 28px 20px;
+
+    border-radius: 20px;
   }
 
   .student-login-card h1 {
-    font-size: 26px;
+    font-size: 24px;
+  }
+
+  .brand-name {
+    font-size: 21px;
+  }
+
+  .student-login-icon {
+    width: 48px;
+    height: 48px;
+
+    font-size: 23px;
+  }
+
+  .subtitle {
+    font-size: 12px;
   }
 }
+
+@media (max-width: 380px) {
+  .student-login-card {
+    padding: 24px 16px;
+  }
+
+  .input-wrapper input {
+    height: 47px;
+  }
+
+  .student-login-button {
+    height: 49px;
+  }
+}
+
