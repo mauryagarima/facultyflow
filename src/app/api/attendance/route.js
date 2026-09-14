@@ -29,16 +29,12 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
   return R * c;
 }
 
-
-// ===============================
-// GET - Attendance Records
-// ===============================
 export async function GET() {
   try {
     await connectDB();
 
     const attendance = await Attendance.find({})
-      .populate("studentId", "name enrollmentNumber branch semester")
+      .populate("student", "name enrollmentNumber branch semester")
       .sort({ createdAt: -1 });
 
     return Response.json({
@@ -56,11 +52,6 @@ export async function GET() {
     );
   }
 }
-
-
-// ===============================
-// POST - Student Mark Attendance
-// ===============================
 export async function POST(request) {
   try {
     await connectDB();
@@ -152,15 +143,20 @@ export async function POST(request) {
     }
 
     // Save Attendance
-    const attendance = await Attendance.create({
-      studentId,
-      subject,
-      date,
-      time,
-      latitude: Number(latitude),
-      longitude: Number(longitude),
-      status: "Present",
-    });
+const attendance = await Attendance.create({
+  student: student._id,
+  studentId: student._id.toString(),
+  studentName: student.name,
+  enrollmentNumber: student.enrollmentNumber,
+  branch: student.branch,
+  semester: student.semester.toString(),
+  subject,
+  date,
+  time,
+  latitude: Number(latitude),
+  longitude: Number(longitude),
+  status: "Present",
+});
 
     return Response.json(
       {
