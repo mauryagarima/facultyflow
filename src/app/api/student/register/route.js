@@ -1,9 +1,39 @@
 
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-import Student from "@/models/Student";
 
-const StudentAccountSchema = new mongoose.Schema(
+const StudentSchema = new mongoose.Schema(
+  {
+    name: {
+      type: String,
+      required: true,
+    },
+    enrollmentNumber: {
+      type: String,
+      required: true,
+      unique: true,
+    },
+    email: {
+      type: String,
+      default: "",
+    },
+    mobile: {
+      type: String,
+      default: "",
+    },
+    branch: {
+      type: String,
+      default: "",
+    },
+    semester: {
+      type: String,
+      default: "",
+    },
+  },
+  { timestamps: true }
+);
+
+const AccountSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
@@ -17,7 +47,6 @@ const StudentAccountSchema = new mongoose.Schema(
     email: {
       type: String,
       required: true,
-      unique: true,
     },
     mobile: {
       type: String,
@@ -25,11 +54,11 @@ const StudentAccountSchema = new mongoose.Schema(
     },
     branch: {
       type: String,
-      required: true,
+      default: "",
     },
     semester: {
       type: String,
-      required: true,
+      default: "",
     },
     username: {
       type: String,
@@ -46,14 +75,16 @@ const StudentAccountSchema = new mongoose.Schema(
       required: true,
     },
   },
-  {
-    timestamps: true,
-  }
+  { timestamps: true }
 );
+
+const Student =
+  mongoose.models.Student ||
+  mongoose.model("Student", StudentSchema);
 
 const StudentAccount =
   mongoose.models.StudentAccount ||
-  mongoose.model("StudentAccount", StudentAccountSchema);
+  mongoose.model("StudentAccount", AccountSchema);
 
 async function connectDB() {
   if (mongoose.connection.readyState === 1) {
@@ -120,10 +151,8 @@ export async function POST(request) {
 
     await connectDB();
 
-    const enrollment = enrollmentNumber.trim();
-
     const student = await Student.findOne({
-      enrollmentNumber: enrollment,
+      enrollmentNumber: enrollmentNumber.trim(),
     });
 
     if (!student) {
@@ -131,62 +160,61 @@ export async function POST(request) {
         {
           success: false,
           message:
-            "Student not found. Please enter a valid enrollment number.",
+            "Student not found. Please check your enrollment number.",
         },
         { status: 404 }
       );
     }
 
-    const existingEnrollment = await StudentAccount.findOne({
-      enrollmentNumber: enrollment,
+    const existingAccount = await StudentAccount.findOne({
+      $or: [
+        { enrollmentNumber: enrollmentNumber.trim() },
+        { username: username.trim() },
+        { email: email.trim().toLowerCase() },
+      ],
     });
 
-    if (existingEnrollment) {
+    if (existingAccount) {
+      if (
+        existingAccount.enrollmentNumber ===
+        enrollmentNumber.trim()
+      ) {
+        return NextResponse.json(
+          {
+            success: false,
+            message:
+              "An account already exists for this enrollment number.",
+          },
+          { status: 409 }
+        );
+      }
+
+      if (existingAccount.username === username.trim()) {
+        return NextResponse.json(
+          {
+            success: false,
+            message: "Username already exists.",
+          },
+          { status: 409 }
+        );
+      }
+
       return NextResponse.json(
         {
           success: false,
-          message:
-            "An account already exists for this enrollment number.",
-        },
-        { status: 409 }
-      );
-    }
-
-    const existingUsername = await StudentAccount.findOne({
-      username: username.trim(),
-    });
-
-    if (existingUsername) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Username already exists. Please choose another username.",
-        },
-        { status: 409 }
-      );
-    }
-
-    const existingEmail = await StudentAccount.findOne({
-      email: email.trim().toLowerCase(),
-    });
-
-    if (existingEmail) {
-      return NextResponse.json(
-        {
-          success: false,
-          message: "Email is already registered.",
+          message: "Email already registered.",
         },
         { status: 409 }
       );
     }
 
     const account = await StudentAccount.create({
-      fullName: student.name,
-      enrollmentNumber: student.enrollmentNumber,
+      fullName: fullName.trim(),
+      enrollmentNumber: enrollmentNumber.trim(),
       email: email.trim().toLowerCase(),
-      mobile: mobile?.trim() || student.mobile,
-      branch: student.branch,
-      semester: student.semester,
+      mobile: mobile?.trim() || "",
+      branch,
+      semester,
       username: username.trim(),
       password,
       studentId: student._id,
@@ -207,7 +235,7 @@ export async function POST(request) {
       { status: 201 }
     );
   } catch (error) {
-    console.error("Student Register API Error:", error);
+    console.error("Student Registration API Error:", error);
 
     return NextResponse.json(
       {

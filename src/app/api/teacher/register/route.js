@@ -1,48 +1,55 @@
-
 import { NextResponse } from "next/server";
 import mongoose from "mongoose";
-import Student from "@/models/Student";
+import Faculty from "@/models/Faculty";
 
-const StudentAccountSchema = new mongoose.Schema(
+const TeacherAccountSchema = new mongoose.Schema(
   {
     fullName: {
       type: String,
       required: true,
     },
-    enrollmentNumber: {
+
+    employeeId: {
       type: String,
       required: true,
       unique: true,
     },
+
     email: {
       type: String,
       required: true,
       unique: true,
     },
+
     mobile: {
       type: String,
       default: "",
     },
-    branch: {
+
+    department: {
       type: String,
       required: true,
     },
-    semester: {
+
+    designation: {
       type: String,
       required: true,
     },
+
     username: {
       type: String,
       required: true,
       unique: true,
     },
+
     password: {
       type: String,
       required: true,
     },
-    studentId: {
+
+    facultyId: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Student",
+      ref: "Faculty",
       required: true,
     },
   },
@@ -51,9 +58,9 @@ const StudentAccountSchema = new mongoose.Schema(
   }
 );
 
-const StudentAccount =
-  mongoose.models.StudentAccount ||
-  mongoose.model("StudentAccount", StudentAccountSchema);
+const TeacherAccount =
+  mongoose.models.TeacherAccount ||
+  mongoose.model("TeacherAccount", TeacherAccountSchema);
 
 async function connectDB() {
   if (mongoose.connection.readyState === 1) {
@@ -69,11 +76,11 @@ export async function POST(request) {
 
     const {
       fullName,
-      enrollmentNumber,
+      employeeId,
       email,
       mobile,
-      branch,
-      semester,
+      department,
+      designation,
       username,
       password,
       confirmPassword,
@@ -81,10 +88,10 @@ export async function POST(request) {
 
     if (
       !fullName ||
-      !enrollmentNumber ||
+      !employeeId ||
       !email ||
-      !branch ||
-      !semester ||
+      !department ||
+      !designation ||
       !username ||
       !password ||
       !confirmPassword
@@ -120,39 +127,39 @@ export async function POST(request) {
 
     await connectDB();
 
-    const enrollment = enrollmentNumber.trim();
+    const employee = employeeId.trim();
 
-    const student = await Student.findOne({
-      enrollmentNumber: enrollment,
+    const faculty = await Faculty.findOne({
+      employeeId: employee,
     });
 
-    if (!student) {
+    if (!faculty) {
       return NextResponse.json(
         {
           success: false,
           message:
-            "Student not found. Please enter a valid enrollment number.",
+            "Faculty not found. Please enter a valid Employee ID.",
         },
         { status: 404 }
       );
     }
 
-    const existingEnrollment = await StudentAccount.findOne({
-      enrollmentNumber: enrollment,
+    const existingEmployee = await TeacherAccount.findOne({
+      employeeId: employee,
     });
 
-    if (existingEnrollment) {
+    if (existingEmployee) {
       return NextResponse.json(
         {
           success: false,
           message:
-            "An account already exists for this enrollment number.",
+            "An account already exists for this Employee ID.",
         },
         { status: 409 }
       );
     }
 
-    const existingUsername = await StudentAccount.findOne({
+    const existingUsername = await TeacherAccount.findOne({
       username: username.trim(),
     });
 
@@ -160,13 +167,14 @@ export async function POST(request) {
       return NextResponse.json(
         {
           success: false,
-          message: "Username already exists. Please choose another username.",
+          message:
+            "Username already exists. Please choose another username.",
         },
         { status: 409 }
       );
     }
 
-    const existingEmail = await StudentAccount.findOne({
+    const existingEmail = await TeacherAccount.findOne({
       email: email.trim().toLowerCase(),
     });
 
@@ -180,34 +188,34 @@ export async function POST(request) {
       );
     }
 
-    const account = await StudentAccount.create({
-      fullName: student.name,
-      enrollmentNumber: student.enrollmentNumber,
+    const account = await TeacherAccount.create({
+      fullName: faculty.name,
+      employeeId: faculty.employeeId,
       email: email.trim().toLowerCase(),
-      mobile: mobile?.trim() || student.mobile,
-      branch: student.branch,
-      semester: student.semester,
+      mobile: mobile?.trim() || faculty.phone,
+      department: faculty.department,
+      designation: faculty.designation,
       username: username.trim(),
       password,
-      studentId: student._id,
+      facultyId: faculty._id,
     });
 
     return NextResponse.json(
       {
         success: true,
-        message: "Student account created successfully.",
+        message: "Teacher account created successfully.",
         data: {
           id: account._id,
           fullName: account.fullName,
-          enrollmentNumber: account.enrollmentNumber,
+          employeeId: account.employeeId,
           username: account.username,
-          studentId: account.studentId,
+          facultyId: account.facultyId,
         },
       },
       { status: 201 }
     );
   } catch (error) {
-    console.error("Student Register API Error:", error);
+    console.error("Teacher Register API Error:", error);
 
     return NextResponse.json(
       {
@@ -218,4 +226,3 @@ export async function POST(request) {
     );
   }
 }
-
